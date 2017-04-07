@@ -1,0 +1,174 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/sindresorhus/gzip-size">gzip-size (v3.0.0)</a>
+</h1>
+<h4>Get the gzipped size of a string or buffer</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gzip-size">module gzip-size</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gzip-size.stream">
+            function <span class="apidocSignatureSpan">gzip-size.</span>stream
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gzip-size.sync">
+            function <span class="apidocSignatureSpan">gzip-size.</span>sync
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gzip-size" id="apidoc.module.gzip-size">module gzip-size</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gzip-size.stream" id="apidoc.element.gzip-size.stream">
+        function <span class="apidocSignatureSpan">gzip-size.</span>stream
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stream = function () {
+	var input = new stream.PassThrough();
+	var output = new stream.PassThrough();
+	var wrapper = duplexer(input, output);
+
+	var gzipSize = 0;
+	var gzip = zlib.createGzip(opts)
+		.on('data', function (buf) {
+			gzipSize += buf.length;
+		})
+		.on('error', function () {
+			wrapper.gzipSize = 0;
+		})
+		.on('end', function () {
+			wrapper.gzipSize = gzipSize;
+			wrapper.emit('gzip-size', gzipSize);
+			output.end();
+		});
+
+	input.pipe(gzip);
+	input.pipe(output, {end: false});
+
+	return wrapper;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Type: `string`, `buffer`
+
+#### callback(error, size)
+
+Type: `function`
+
+### gzipSize.<span class="apidocCodeKeywordSpan">stream</span>()
+
+Returns a passthrough stream. The stream emits a `gzip-size` event and has a `gzipSize` property.
+
+
+## Related
+
+- [gzip-size-cli](https://github.com/sindresorhus/gzip-size-cli) - CLI for this module
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gzip-size.sync" id="apidoc.element.gzip-size.sync">
+        function <span class="apidocSignatureSpan">gzip-size.</span>sync
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sync = function (str) {
+	return zlib.gzipSync(str, opts).length;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```js
+var gzipSize = require('gzip-size');
+var string = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
+ sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.';
+
+console.log(string.length);
+//=&gt; 191
+
+console.log(gzipSize.<span class="apidocCodeKeywordSpan">sync</span>(string));
+//=&gt; 78
+```
+
+
+## API
+
+### gzipSize(input, callback)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
