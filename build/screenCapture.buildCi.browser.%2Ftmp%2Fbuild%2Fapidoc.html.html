@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/sindresorhus/gzip-size"
-
-    >gzip-size (v3.0.0)</a>
+    <a href="https://github.com/sindresorhus/gzip-size">gzip-size (v3.0.0)</a>
 </h1>
 <h4>Get the gzipped size of a string or buffer</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gzip-size">module gzip-size</a><ol>
 
@@ -204,15 +197,15 @@
 
 	var gzipSize = 0;
 	var gzip = zlib.createGzip(opts)
-		.on(&#x27;data&#x27;, function (buf) {
+		.on('data', function (buf) {
 			gzipSize += buf.length;
 		})
-		.on(&#x27;error&#x27;, function () {
+		.on('error', function () {
 			wrapper.gzipSize = 0;
 		})
-		.on(&#x27;end&#x27;, function () {
+		.on('end', function () {
 			wrapper.gzipSize = gzipSize;
-			wrapper.emit(&#x27;gzip-size&#x27;, gzipSize);
+			wrapper.emit('gzip-size', gzipSize);
 			output.end();
 		});
 
@@ -254,15 +247,15 @@ Returns a passthrough stream. The stream emits a `gzip-size` event and has a `gz
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```js
-var gzipSize = require(&#x27;gzip-size&#x27;);
-var string = &#x27;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
- sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.&#x27;;
+var gzipSize = require('gzip-size');
+var string = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
+ sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.';
 
 console.log(string.length);
-//=&#x3e; 191
+//=&gt; 191
 
 console.log(gzipSize.<span class="apidocCodeKeywordSpan">sync</span>(string));
-//=&#x3e; 78
+//=&gt; 78
 ```
 
 
@@ -320,15 +313,15 @@ console.log(gzipSize.<span class="apidocCodeKeywordSpan">sync</span>(string));
 
 	var gzipSize = 0;
 	var gzip = zlib.createGzip(opts)
-		.on(&#x27;data&#x27;, function (buf) {
+		.on('data', function (buf) {
 			gzipSize += buf.length;
 		})
-		.on(&#x27;error&#x27;, function () {
+		.on('error', function () {
 			wrapper.gzipSize = 0;
 		})
-		.on(&#x27;end&#x27;, function () {
+		.on('end', function () {
 			wrapper.gzipSize = gzipSize;
-			wrapper.emit(&#x27;gzip-size&#x27;, gzipSize);
+			wrapper.emit('gzip-size', gzipSize);
 			output.end();
 		});
 
@@ -370,15 +363,15 @@ Returns a passthrough stream. The stream emits a `gzip-size` event and has a `gz
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```js
-var gzipSize = require(&#x27;gzip-size&#x27;);
-var string = &#x27;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
- sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.&#x27;;
+var gzipSize = require('gzip-size');
+var string = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
+ sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.';
 
 console.log(string.length);
-//=&#x3e; 191
+//=&gt; 191
 
 console.log(gzipSize.<span class="apidocCodeKeywordSpan">sync</span>(string));
-//=&#x3e; 78
+//=&gt; 78
 ```
 
 
@@ -397,3 +390,4 @@ console.log(gzipSize.<span class="apidocCodeKeywordSpan">sync</span>(string));
     ]
 </div>
 </div>
+</body></html>
